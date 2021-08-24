@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>前言 · GitBook</title>
+        <title>B站相关功能 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="BilibiliDocs.html" />
     
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -87,7 +87,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -100,7 +100,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="BilibiliDocs.html">
+        <li class="chapter active" data-level="1.2" data-path="BilibiliDocs.html">
             
                 <a href="BilibiliDocs.html">
             
@@ -143,7 +143,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >前言</a>
+        <a href="." >B站相关功能</a>
     </h1>
 </div>
 
@@ -158,19 +158,51 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h1>
-<p>Hello! &#x8FD9;&#x91CC;&#x662F;&#x6C50;&#x6D1B;&#x7684;Bot&#x6587;&#x6863;!</p>
-<p>&#x60A8;&#x53EF;&#x4EE5;&#x5728;&#x4FA7;&#x680F;&#x9009;&#x62E9;&#x60A8;&#x60F3;&#x770B;&#x7684;&#x5185;&#x5BB9;!</p>
-<p>&#x6211;&#x5E0C;&#x671B;&#x6211;&#x4E0D;&#x4F1A;&#x770B;&#x5230;&#x4EE5;&#x4E0B;&#x51E0;&#x70B9; (&#x5982;&#x679C;&#x6211;&#x770B;&#x5230;&#x4E86;,&#x90A3;&#x4E48;&#x6211;&#x5C31;&#x8981;&#x8003;&#x8651;&#x4E00;&#x4E0B;&#x524A;&#x51CF;&#x529F;&#x80FD;&#x4E86;)</p>
+                                <h1 id="b&#x7AD9;&#x76F8;&#x5173;&#x529F;&#x80FD;">B&#x7AD9;&#x76F8;&#x5173;&#x529F;&#x80FD;</h1>
+<p><strong>1.&#x641C;&#x7D20;&#x529F;&#x80FD;</strong></p>
 <ul>
-<li><p><strong>&#x6076;&#x610F;</strong>&#x8BA9;bot&#x53D1;&#x9001;&#x4E00;&#x4E9B;<strong>&#x4E0D;&#x96C5;/&#x4E0D;&#x5408;&#x6CD5;</strong>&#x7684;&#x5185;&#x5BB9;</p>
+<li>/bili-search &#x756A;&#x5267; \<keyword\>  # &#x641C;&#x7D22;&#x756A;&#x5267;</keyword\></li>
+<li>/bili-search &#x5F71;&#x89C6; \<keyword\>  # &#x641C;&#x7D22;&#x5F71;&#x89C6;</keyword\></li>
+<li>/bili-search &#x7528;&#x6237; \<keyword\>  # &#x641C;&#x7D22;&#x7528;&#x6237;</keyword\></li>
+</ul>
+<p><strong>2.&#x67E5;&#x8BE2;&#x529F;&#x80FD; (&#x4EE5;&#x4E0B;&#x529F;&#x80FD;&#x90FD;&#x6709;&#x81EA;&#x52A8;&#x5339;&#x914D;&#x94FE;&#x63A5;,&#x53EF;&#x76F4;&#x63A5;&#x53D1;&#x9001;&#x94FE;&#x63A5;)</strong></p>
+<ul>
+<li>/bili-info aid \<id\>               # &#x67E5;&#x8BE2;&#x89C6;&#x9891; (AV&#x53F7;)</id\></li>
+<li>/bili-info bvid \<id\>             # &#x67E5;&#x8BE2;&#x89C6;&#x9891; (BV&#x53F7;)</id\></li>
+<li>/bili-info dynamic \<id\>     # &#x67E5;&#x8BE2;&#x52A8;&#x6001;</id\></li>
+<li>/bili-info live \<id\>              # &#x67E5;&#x8BE2;&#x76F4;&#x64AD;&#x95F4;</id\></li>
+</ul>
+<p><strong>3.&#x8BA2;&#x9605; (&#x4EC5;&#x7FA4;&#x7BA1;&#x7406;&#x5458;/&#x7FA4;&#x4E3B;&#x548C;&#x8D85;&#x7BA1;&#x53EF;&#x7528;)</strong></p>
+<ul>
+<li><p>&#x89C6;&#x9891;&#x8BA2;&#x9605;</p>
+<ul>
+<li>/bili-video add \<uid\>
+/bili-video &#x6DFB;&#x52A0; \<uid\></uid\></uid\></li>
+<li>/bili-video list
+/bili-video &#x5217;&#x8868;</li>
+<li>/bili-video stop \<uid\>
+/bili-video &#x505C;&#x6B62; \<uid\></uid\></uid\></li>
+</ul>
 </li>
-<li><p><strong>&#x6EE5;&#x7528;</strong>bot</p>
+<li>&#x52A8;&#x6001;&#x8BA2;&#x9605;<ul>
+<li>/bili-dynamic add \<uid\>
+/bili-dynamic &#x6DFB;&#x52A0; \<uid\></uid\></uid\></li>
+<li>/bili-dynamic list
+/bili-dynamic &#x5217;&#x8868;</li>
+<li>/bili-dynamic stop \<uid\>
+/bili-dynamic &#x505C;&#x6B62; \<uid\></uid\></uid\></li>
+</ul>
 </li>
-<li><p>&#x7B49;&#x7B49;...</p>
+<li>&#x76F4;&#x64AD;&#x8BA2;&#x9605;<ul>
+<li>/bili-live add \<uid\>
+/bili-live &#x6DFB;&#x52A0; \<uid\></uid\></uid\></li>
+<li>/bili-live list
+/bili-live &#x5217;&#x8868;</li>
+<li>/bili-live stop \<uid\>
+/bili-live &#x505C;&#x6B62; \<uid\></uid\></uid\></li>
+</ul>
 </li>
 </ul>
-<p>&#x6700;&#x540E;,&#x5982;&#x679C;&#x4F60;&#x5BF9;bot&#x6709;&#x4E0A;&#x9762;&#x5EFA;&#x8BAE;,&#x5C3D;&#x60C5;&#x627E;&#x6211;! <strong>&#x6211;&#x80FD;&#x505A;&#x5230;&#x7684;</strong>&#x6211;&#x4F1A;&#x4E00;&#x4E00;&#x5B8C;&#x6210;!</p>
 <hr>
 <p><em>&#x6211;&#x7684;QQ: 1584784496</em></p>
 <p><em>&#x6211;&#x7684;&#x90AE;&#x7BB1;: hy20080213@163.com</em></p>
@@ -201,10 +233,10 @@
 
             
                 
-                
-                <a href="BilibiliDocs.html" class="navigation navigation-next navigation-unique" aria-label="Next page: B站相关功能">
-                    <i class="fa fa-angle-right"></i>
+                <a href="./" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 前言">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -213,7 +245,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"前言","level":"1.1","depth":1,"next":{"title":"B站相关功能","level":"1.2","depth":1,"path":"BilibiliDocs.md","ref":"BilibiliDocs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2021-08-24T02:58:17.701Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-24T03:08:28.230Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"B站相关功能","level":"1.2","depth":1,"previous":{"title":"前言","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"BilibiliDocs.md","mtime":"2021-08-24T03:08:02.132Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-24T03:08:28.230Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
