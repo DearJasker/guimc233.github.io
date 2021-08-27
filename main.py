@@ -8,11 +8,6 @@ import json
 import re
 import os
 from mcstatus import MinecraftServer
-from tencentcloud.common import credential
-from tencentcloud.common.profile.client_profile import ClientProfile
-from tencentcloud.common.profile.http_profile import HttpProfile
-from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
-from tencentcloud.tmt.v20180321 import tmt_client, models
 
 fuckmozhengb = {}
 fuckSpamDog = {}
@@ -21,11 +16,6 @@ joinlists = {}
 adminList = [1790194105,1584784496,2734583]
 hypban_cookie = None
 hypban_isChecking = False
-kijuhfwoeh1 = open("token.txt",'r')
-kijuhfwoeh = kijuhfwoeh1.read()
-kijuhfwoeh1.close()
-print(kijuhfwoeh.split(' ')[0], kijuhfwoeh.split(' ')[1])
-cred = credential.Credential(kijuhfwoeh.split(' ')[0], kijuhfwoeh.split(' ')[1])
 
 def SpamCheck(group,qq,msgid):
 	return
@@ -133,19 +123,6 @@ def on_message2(ws, message):
 				print(requests.post("http://localhost:8080/sendGroupMessage",data=json.dumps(data1)).text)
 			except Exception as e:
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"ERR: {}:{}".format(type(e),e))
-		if command_list[0] == "#fanyi":
-			try:
-				if sender_qqnumber not in fanyitimes: fanyitimes[sender_qqnumber]=0
-				fanyitimes[sender_qqnumber] += 1
-				if sender_qqnumber in [1584784496]: fanyitimes[sender_qqnumber]=0
-				print(fanyitimes[sender_qqnumber])
-				if fanyitimes[sender_qqnumber] <= 20:
-					sendGroupmsg(group_number,message_id,sender_qqnumber,fanyi(" ".join(command_list[1:]),"auto","zh"))
-				else:
-					sendGroupmsg(group_number,message_id,sender_qqnumber,"已达本次脚本启动限额!")
-				# sendGroupmsg(group_number,message_id,sender_qqnumber," ".join(command_list[1:]))
-			except Exception as e:
-				sendGroupmsg(group_number,message_id,sender_qqnumber,"ERR: {}:{}".format(type(e),e))
 		if command_list[0] == "折磨":
 			if ad["sender"]["permission"] in ["OWNER","ADMINISTRATOR"] or sender_qqnumber in adminList:
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"Starting...")
@@ -243,30 +220,6 @@ def sendGroupmsg2(target1,text):
 		]
 	}
 	print(requests.post("http://localhost:8080/sendGroupMessage",data=json.dumps(data1)).text)
-
-def fanyi(text,t1,t2):
-	global cred
-	try:
-		httpProfile = HttpProfile()
-		httpProfile.endpoint = "tmt.tencentcloudapi.com"
-
-		clientProfile = ClientProfile()
-		clientProfile.httpProfile = httpProfile
-		client = tmt_client.TmtClient(cred, "ap-guangzhou", clientProfile)
-
-		req = models.TextTranslateRequest()
-		params = {
-			"SourceText": text,
-			"Source": t1,
-			"Target": t2,
-			"ProjectId": 0
-		}
-		req.from_json_string(json.dumps(params))
-
-		resp = client.TextTranslate(req)
-		return "翻译结果:{}".format(json.loads(resp.to_json_string())["TargetText"])
-	except TencentCloudSDKException as err:
-		return "发生错误!{}".format(err)
 
 def sendGroupmsg3(target1,senderqq,text):
 	data1 = {
