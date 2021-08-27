@@ -18,10 +18,11 @@ fuckmozhengb = {}
 fuckSpamDog = {}
 fanyitimes = {}
 joinlists = {}
-hefenkey = "372554a757a0484591d65817f1770a2f"
 adminList = [1790194105,1584784496,2734583]
 hypban_cookie = None
 hypban_isChecking = False
+kijuhfwoeh = open("token.txt",'r').text
+cred = credential.Credential(kijuhfwoeh.split(' ')[0], kijuhfwoeh.split(' ')[1])
 
 def SpamCheck(group,qq,msgid):
 	return
@@ -241,8 +242,8 @@ def sendGroupmsg2(target1,text):
 	print(requests.post("http://localhost:8080/sendGroupMessage",data=json.dumps(data1)).text)
 
 def fanyi(text,t1,t2):
+	global cred
 	try:
-		cred = credential.Credential("AKIDoQmrjLfiUbV9XfX9VbR2OVLuCJCpCJAl", "MSJuEJ8i28yYsxlKdgU2KM9gwveEZfW8")
 		httpProfile = HttpProfile()
 		httpProfile.endpoint = "tmt.tencentcloudapi.com"
 
