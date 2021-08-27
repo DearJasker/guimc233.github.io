@@ -21,7 +21,9 @@ joinlists = {}
 adminList = [1790194105,1584784496,2734583]
 hypban_cookie = None
 hypban_isChecking = False
-kijuhfwoeh = open("token.txt",'r').text
+kijuhfwoeh1 = open("token.txt",'r')
+kijuhfwoeh = kijuhfwoeh1.read()
+kijuhfwoeh1.close()
 cred = credential.Credential(kijuhfwoeh.split(' ')[0], kijuhfwoeh.split(' ')[1])
 
 def SpamCheck(group,qq,msgid):
