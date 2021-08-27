@@ -142,9 +142,9 @@ def on_message2(ws, message):
 				BanID = command_list[2].replace("#","")
 				print("Username:{} BanID:{}".format(userName,BanID))
 				if hypban_cookie != None:
-					b = requests.get("https://api.xgstudio.xyz/hypban.php?name={0}&banid={1}&type=api".format(userName,BanID),cookies=requests.utils.dict_from_cookiejar(hypban_cookie))
+					b = requests.get("http://127.0.0.1/hypban.php?name={0}&banid={1}&type=api".format(userName,BanID),headers={'Host':'api.xgstudio.xyz'},cookies=requests.utils.dict_from_cookiejar(hypban_cookie))
 				else:
-					b = requests.get("https://api.xgstudio.xyz/hypban.php?name={0}&banid={1}&type=api".format(userName,BanID))
+					b = requests.get("http://127.0.0.1/hypban.php?name={0}&banid={1}&type=api".format(userName,BanID),headers={'Host':'api.xgstudio.xyz'})
 				a = b.text
 				hypban_cookie = b.cookies
 				print(a)
