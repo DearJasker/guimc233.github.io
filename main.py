@@ -24,6 +24,7 @@ hypban_isChecking = False
 kijuhfwoeh1 = open("token.txt",'r')
 kijuhfwoeh = kijuhfwoeh1.read()
 kijuhfwoeh1.close()
+print(kijuhfwoeh.split(' ')[0], kijuhfwoeh.split(' ')[1])
 cred = credential.Credential(kijuhfwoeh.split(' ')[0], kijuhfwoeh.split(' ')[1])
 
 def SpamCheck(group,qq,msgid):
