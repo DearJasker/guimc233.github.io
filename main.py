@@ -161,21 +161,21 @@ def on_message2(ws, message):
 		# print(reScan)
 		if len(message_text) > 35 and reScan != None:
 			if sender_qqnumber in adminList:
-				sendGroupmsg3(group_number,sender_qqnumber,"你好像在发广告 :(((((\n但是您是超管..."+"\n如果您认为有误判 请联系 1584784496\n第一次被匹配到的字符:{}".format(reScan.group(0)))
+				sendGroupmsg3(group_number,sender_qqnumber,"你好像在发广告 :(((((\n但是您是超管..."+"\n如果您认为有误判 请联系 1584784496\n第一次匹配到 {0} 在位置 {1}".format(reScan.group(0),reScan.span()))
 				sendTempMsg(group_number,1584784496,"{0}({1})匹配成功了正则,并且消息字数大于了35\n消息:\n{2}".format(sender_name,sender_qqnumber,message_text))
 				return
 			if ad["sender"]["permission"] in ["OWNER","ADMINISTRATOR"]:
-				sendGroupmsg3(group_number,sender_qqnumber,"你好像在发广告 :(((((\n但是我貌似管不了你..."+"\n如果您认为有误判 请联系 1584784496\n第一次被匹配到的字符:{}".format(reScan.group(0)))
+				sendGroupmsg3(group_number,sender_qqnumber,"你好像在发广告 :(((((\n但是我貌似管不了你..."+"\n如果您认为有误判 请联系 1584784496\n第一次匹配到 {0} 在位置 {1}".format(reScan.group(0),reScan.span()))
 				sendTempMsg(group_number,1584784496,"{0}({1})匹配成功了正则,并且消息字数大于了35\n消息:\n{2}".format(sender_name,sender_qqnumber,message_text))
 				return
-			sendGroupmsg3(group_number,sender_qqnumber,"你好像在发广告 :((((("+"\n如果您认为有误判 请联系 1584784496\n第一次被匹配到的字符:{}".format(reScan.group(0)))
+			sendGroupmsg3(group_number,sender_qqnumber,"你好像在发广告 :((((("+"\n如果您认为有误判 请联系 1584784496\n第一次匹配到 {0} 在位置 {1}".format(reScan.group(0),reScan.span()))
 			recall(message_id)
 			sendTempMsg(group_number,1584784496,"{0}({1})匹配成功了正则,并且消息字数大于了35\n消息:\n{2}".format(sender_name,sender_qqnumber,message_text))
 			if sender_qqnumber not in sendAdList:
 				sendAdList[sender_qqnumber] = 1
 			else:
 				sendAdList[sender_qqnumber] += 1
-				if sendAdList[sender_qqnumber] == 3:
+				if sendAdList[sender_qqnumber] == 5:
 					mutePerson(group_number,sender_qqnumber,2591940)
 					# sendGroupmsg3(group_number,sender_qqnumber,"触发禁言Test")
 					sendAdList[sender_qqnumber] = 0
