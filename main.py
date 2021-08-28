@@ -165,17 +165,18 @@ def on_message2(ws, message):
 				sendGroupmsg(group_number,message_id,sender_qqnumber,a)
 			except Exception as e:
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"ERR: {}:{}".format(type(e),e))
-		print(re.search("qq:[1-9]([0-9]{4,10})|(花雨庭|hyp|hyt)|暴打|拿捏|配置|暴击|杀戮|.*内部|\\dR|\\n元|破甲|[0-9]{2,4}-[0-9]{2,4}|天花板|工具箱|[0-9]{2,4}/[0-9]{2}/[0-9]{2}|绕更新|attach|cl14|cl8|开端|不封号|外部|.* toolbox|替换au|绕过(盒子)vape检测|外部|防封|封号|waibu|晋商|禁商|盒子更新后|跑路|小号机|群(号)[0-9]{5,10}", message_text))
-		if len(message_text) > 35 and re.search("qq:[1-9]([0-9]{4,10})|(花雨庭|hyp|hyt)|暴打|拿捏|配置|暴击|杀戮|.*内部|\\dR|\\n元|破甲|[0-9]{2,4}-[0-9]{2,4}|天花板|工具箱|[0-9]{2,4}/[0-9]{2}/[0-9]{2}|绕更新|attach|cl14|cl8|开端|不封号|外部|.* toolbox|替换au|绕过(盒子)vape检测|外部|防封|封号|waibu|晋商|禁商|盒子更新后|跑路|小号机|群(号)[0-9]{5,10}", message_text) != None:
-			#if sender_qqnumber in adminList:
-			#	sendGroupmsg3(group_number,sender_qqnumber,"你好像在发广告 :(((((\n但是您是超管...")
-			#	sendTempMsg(group_number,1584784496,"{0}({1})匹配成功了正则,并且消息字数大于了35\n消息:\n{2}".format(sender_name,sender_qqnumber,message_text))
-			#	return
-			#if ad["sender"]["permission"] in ["OWNER","ADMINISTRATOR"]:
-			#	sendGroupmsg3(group_number,sender_qqnumber,"你好像在发广告 :(((((\n但是我貌似管不了你...")
-			#	sendTempMsg(group_number,1584784496,"{0}({1})匹配成功了正则,并且消息字数大于了35\n消息:\n{2}".format(sender_name,sender_qqnumber,message_text))
-			#	return
-			sendGroupmsg3(group_number,sender_qqnumber,"你好像在发广告 :(((((")
+		reScan = re.search("暴打|拿捏|配置|暴击|杀戮|.*内部|\\dR|\\n元|破甲|[0-9]{2,4}-[0-9]{2,4}|天花板|工具箱|[0-9]{2,4}/[0-9]{2}/[0-9]{2}|绕更新|attach|cl14|cl8|开端|不封号|外部|.* toolbox|替换au|绕过(盒子)vape检测|外部|防封|封号|waibu|晋商|禁商|盒子更新后|跑路|小号机|群(号)[0-9]{5,10}", message_text)
+		# print(reScan)
+		if len(message_text) > 35 and reScan != None:
+			if sender_qqnumber in adminList:
+				sendGroupmsg3(group_number,sender_qqnumber,"你好像在发广告 :(((((\n但是您是超管..."+"\n如果您认为有误判 请联系 1584784496\n第一次被匹配到的字符:{}".format(reScan.group(0)))
+				sendTempMsg(group_number,1584784496,"{0}({1})匹配成功了正则,并且消息字数大于了35\n消息:\n{2}".format(sender_name,sender_qqnumber,message_text))
+				return
+			if ad["sender"]["permission"] in ["OWNER","ADMINISTRATOR"]:
+				sendGroupmsg3(group_number,sender_qqnumber,"你好像在发广告 :(((((\n但是我貌似管不了你..."+"\n如果您认为有误判 请联系 1584784496\n第一次被匹配到的字符:{}".format(reScan.group(0)))
+				sendTempMsg(group_number,1584784496,"{0}({1})匹配成功了正则,并且消息字数大于了35\n消息:\n{2}".format(sender_name,sender_qqnumber,message_text))
+				return
+			sendGroupmsg3(group_number,sender_qqnumber,"你好像在发广告 :((((("+"\n如果您认为有误判 请联系 1584784496\n第一次被匹配到的字符:{}".format(reScan.group(0)))
 			recall(message_id)
 			sendTempMsg(group_number,1584784496,"{0}({1})匹配成功了正则,并且消息字数大于了35\n消息:\n{2}".format(sender_name,sender_qqnumber,message_text))
 			if sender_qqnumber not in sendAdList:
@@ -183,9 +184,8 @@ def on_message2(ws, message):
 			else:
 				sendAdList[sender_qqnumber] += 1
 				if sendAdList[sender_qqnumber] == 3:
-					# mutePerson(group_number,sender_qqnumber,2591940)
-					# sendGroupmsg3(group_number,sender_qqnumber,"禁言29天23时59分")
-					sendGroupmsg3(group_number,sender_qqnumber,"触发禁言Test")
+					mutePerson(group_number,sender_qqnumber,2591940)
+					# sendGroupmsg3(group_number,sender_qqnumber,"触发禁言Test")
 					sendAdList[sender_qqnumber] = 0
 		if command_list[0] == "#fdpinfo":
 			# https://bstats.org/api/v1/plugins/11076/charts/<Type>/data
