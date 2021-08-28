@@ -107,6 +107,7 @@ def on_message2(ws, message):
 		if message_text == "#restart":
 			if sender_qqnumber in adminList:
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"Okay")
+				exit()
 			else:
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"为什么随便试指令?Your mother died?")
 		if message_text == "#sjyy":
