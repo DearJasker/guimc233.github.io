@@ -161,6 +161,7 @@ def on_message2(ws, message):
 				sendGroupmsg(group_number,message_id,sender_qqnumber,a)
 			except Exception as e:
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"ERR: {}:{}".format(type(e),e))
+		print(re.search("qq:[1-9]([0-9]{4,10})|(花雨庭|hyp|hyt)|暴打|拿捏|配置|暴击|杀戮|.*内部|\\dR|\\n元|破甲|[0-9]{2,4}-[0-9]{2,4}|天花板|工具箱|[0-9]{2,4}/[0-9]{2}/[0-9]{2}|绕更新|attach|cl14|cl8|开端|不封号|外部|.* toolbox|替换au|绕过(盒子)vape检测|外部|防封|封号|waibu|晋商|禁商|盒子更新后|跑路|小号机|群(号)[0-9]{5,10}", message_text))
 		if len(message_text) < 35 and re.search("qq:[1-9]([0-9]{4,10})|(花雨庭|hyp|hyt)|暴打|拿捏|配置|暴击|杀戮|.*内部|\\dR|\\n元|破甲|[0-9]{2,4}-[0-9]{2,4}|天花板|工具箱|[0-9]{2,4}/[0-9]{2}/[0-9]{2}|绕更新|attach|cl14|cl8|开端|不封号|外部|.* toolbox|替换au|绕过(盒子)vape检测|外部|防封|封号|waibu|晋商|禁商|盒子更新后|跑路|小号机|群(号)[0-9]{5,10}", message_text) != None:
 			sendGroupmsg3(group_number,sender_qqnumber,"你好像在发广告 :(((((")
 			recall(message_id)
