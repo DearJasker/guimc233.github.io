@@ -106,14 +106,6 @@ def on_message2(ws, message):
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"ERR: {}:{}".format(type(e),e))
 		if command_list[0] == "#help":
 			sendGroupmsg(group_number,message_id,sender_qqnumber,"请访问: http://bot.guimc.ltd/")
-		if message_text == "#restart":
-			if sender_qqnumber in adminList:
-				sendGroupmsg(group_number,message_id,sender_qqnumber,"Trying restart...")
-				sys.exit(0)
-			elif ad["sender"]["permission"] in ["OWNER","ADMINISTRATOR"]:
-				sendGroupmsg(group_number,message_id,sender_qqnumber,"管理员/群主用不了这个指令! 只有超管可以")
-			else:
-				sendGroupmsg(group_number,message_id,sender_qqnumber,"为什么随便试指令?Your mother died?")
 		if message_text == "#sjyy":
 			sendGroupmsg(group_number,message_id,sender_qqnumber,requests.get("http://api.muxiuge.cn/API/society.php").json()["text"])
 		if command_list[0] == "/mcping":
