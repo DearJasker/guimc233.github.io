@@ -104,6 +104,11 @@ def on_message2(ws, message):
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"ERR: {}:{}".format(type(e),e))
 		if command_list[0] == "#help":
 			sendGroupmsg(group_number,message_id,sender_qqnumber,"请访问: http://bot.guimc.ltd/")
+		if message_text == "#restart":
+			if sender_qqnumber in adminList:
+				sendGroupmsg(group_number,message_id,sender_qqnumber,"Okay")
+			else:
+				sendGroupmsg(group_number,message_id,sender_qqnumber,"为什么随便试指令?Your mother died?")
 		if message_text == "#sjyy":
 			sendGroupmsg(group_number,message_id,sender_qqnumber,requests.get("http://api.muxiuge.cn/API/society.php").json()["text"])
 		if command_list[0] == "/mcping":
