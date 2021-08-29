@@ -37,9 +37,20 @@ def on_message2(ws, message):
 		if ad["type"] == "GroupMuteAllEvent":
 			print(requests.post("http://127.0.0.1:8080/unmuteAll",data=json.dumps({"target":ad["group"]["id"]})))
 		if ad["type"] == "MemberJoinRequestEvent":
-			aaa = "有人正在申请入群!\n申请用户:{0}({1})".format(ad["nick"],ad["fromId"])
-			sendGroupmsg2(ad["groupId"],aaa)
-			joinlists[ad["eventId"]] = [ad["fromId"],ad["groupId"]]
+			try:
+				aaa = "有人正在申请入群!\n正在验证是否在云黑名单\n如果不在云黑名单将自动同意进群"
+				sendGroupmsg2(ad["groupId"],aaa)
+				# Blacklist URL: http://bot.guimc.ltd/blacklist
+				blacklist = requests.get("http://bot.guimc.ltd/blacklist").text.split("\n")
+				for i in blacklist:
+					if i == str(fromId):
+						sendGroupmsg2(ad["groupId"],"此人在云黑名单内,自动拒绝请求")
+						acceptJoinRequests(ad["eventId"],ad["fromId"],ad["groupId"],1,"您在云黑名单内,自动拒绝!如果有异议,请咨询1584784496")
+						return
+				sendGroupmsg2(ad["groupId"],"此人不在云黑名单内,自动同意请求")
+				acceptJoinRequests(ad["eventId"],ad["fromId"],ad["groupId"],0)
+			except Exception as e:
+				sendGroupmsg2(ad["groupId"],"自动处理进群申请失败! {}:{}".format(type(e),e))
 		if ad["type"] == "MemberLeaveEventKick":
 			aaa = "{0}({1})被移出了本群！\n操作人:{2}({3})".format(ad["member"]["memberName"],ad["member"]["id"],ad["operator"]["memberName"],ad["operator"]["id"])
 			sendGroupmsg2(ad["operator"]["group"]["id"],aaa)
@@ -214,6 +225,16 @@ def on_message2(ws, message):
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"ERR: {}:{}".format(type(e),e))
 	except Exception as e:
 		print(e)
+
+def acceptJoinRequests(eventId,fromId,groupId,operate,message=""):
+	data1 = {
+		"eventId":eventId,
+		"fromId":fromId,
+		"groupId":groupId,
+		"operate":operate,
+		"message":message
+	}
+	print(requests.post("http://127.0.0.1:8080/resp/memberJoinRequestEvent",data=json.dumps(data1)))
 
 def mutePerson(group,qqnumber,mutetime):
 	data1 = {
