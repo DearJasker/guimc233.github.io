@@ -43,7 +43,7 @@ def on_message2(ws, message):
 				# Blacklist URL: http://bot.guimc.ltd/blacklist
 				blacklist = requests.get("http://bot.guimc.ltd/blacklist").text.split("\n")
 				for i in blacklist:
-					if i == str(fromId):
+					if i == str(ad["fromId"]):
 						sendGroupmsg2(ad["groupId"],"此人在云黑名单内,自动拒绝请求")
 						acceptJoinRequests(ad["eventId"],ad["fromId"],ad["groupId"],1,"您在云黑名单内,自动拒绝!如果有异议,请咨询1584784496")
 						return
