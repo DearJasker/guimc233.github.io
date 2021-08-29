@@ -10,13 +10,8 @@ import re
 import os
 from mcstatus import MinecraftServer
 
-fuckmozhengb = {}
-fuckSpamDog = {}
-fanyitimes = {}
-joinlists = {}
 adminList = [1790194105,1584784496,2734583]
 hypban_cookie = None
-hypban_isChecking = False
 sendAdList = {}
 
 def SpamCheck(group,qq,msgid):
@@ -27,7 +22,6 @@ def blockList_get(number):
 
 def on_message2(ws, message):
 	global hypban_cookie
-	global hypban_isChecking
 	try:
 		# print(message)
 		a = json.loads(message)
@@ -168,7 +162,7 @@ def on_message2(ws, message):
 				sendGroupmsg(group_number,message_id,sender_qqnumber,a)
 			except Exception as e:
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"ERR: {}:{}".format(type(e),e))
-		reScan = re.search(".*内部|\\dR|\\n元|破甲|[0-9]{2,4}-[0-9]{2,4}|天花板|工具箱|[0-9]{2,4}/[0-9]{2}/[0-9]{2}|绕更新|attach|cl14|cl8|开端|不封号|外部|.* toolbox|替换au|绕过(盒子)vape检测|外部|防封|封号|waibu|晋商|禁商|盒子更新后|跑路|小号机|群(号)[0-9]{5,10}", message_text.replace(" ","").replace("\n",""))
+		reScan = re.search(".*内部|\\dR|\\n元|破甲|天花板|工具箱|绕更新|attach|cl14|cl8|开端|不封号|外部|.* toolbox|替换au|绕过(盒子)vape检测|外部|防封|封号|waibu|晋商|禁商|盒子更新后|跑路|小号机|群(号)[0-9]{5,10}", message_text.replace(" ","").replace("\n",""))
 		# print(reScan)
 		if len(message_text) > 35 and reScan != None:
 			if sender_qqnumber in adminList:
