@@ -144,24 +144,25 @@ def on_message2(ws, message):
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"Finish!!!")
 			else:sendGroupmsg(group_number,message_id,sender_qqnumber,"You can't do it!!!")
 		if command_list[0] == "#hypban":
-			try:
-				userName = command_list[1]
-				BanID = command_list[2].replace("#","")
-				print("Username:{} BanID:{}".format(userName,BanID))
-				if hypban_cookie != None:
-					b = requests.get("http://127.0.0.1/hypban.php?name={0}&banid={1}&type=api".format(userName,BanID),headers={'Host':'api.xgstudio.xyz'},cookies=requests.utils.dict_from_cookiejar(hypban_cookie))
-				else:
-					b = requests.get("http://127.0.0.1/hypban.php?name={0}&banid={1}&type=api".format(userName,BanID),headers={'Host':'api.xgstudio.xyz'})
-				a = b.text
-				hypban_cookie = b.cookies
-				print(a)
-				if a == "SparklingWater:Wait some time to Use":
-					a = "Please Wait some time to use"
-				elif a.find("<b>Warning</b>:  sizeof():") != -1:
-					a = "Error:We can't get banInfo!"
-				sendGroupmsg(group_number,message_id,sender_qqnumber,a)
-			except Exception as e:
-				sendGroupmsg(group_number,message_id,sender_qqnumber,"ERR: {}:{}".format(type(e),e))
+			#try:
+			#	userName = command_list[1]
+			#	BanID = command_list[2].replace("#","")
+			#	print("Username:{} BanID:{}".format(userName,BanID))
+			#	if hypban_cookie != None:
+			#		b = requests.get("http://127.0.0.1/hypban.php?name={0}&banid={1}&type=api".format(userName,BanID),headers={'Host':'api.xgstudio.xyz'},cookies=requests.utils.dict_from_cookiejar(hypban_cookie))
+			#	else:
+			#		b = requests.get("http://127.0.0.1/hypban.php?name={0}&banid={1}&type=api".format(userName,BanID),headers={'Host':'api.xgstudio.xyz'})
+			#	a = b.text
+			#	hypban_cookie = b.cookies
+			#	print(a)
+			#	if a == "SparklingWater:Wait some time to Use":
+			#		a = "Please Wait some time to use"
+			#	elif a.find("<b>Warning</b>:  sizeof():") != -1:
+			#		a = "Error:We can't get banInfo!"
+			#	sendGroupmsg(group_number,message_id,sender_qqnumber,a)
+			#except Exception as e:
+			#	sendGroupmsg(group_number,message_id,sender_qqnumber,"ERR: {}:{}".format(type(e),e))
+			sendGroupmsg(group_number,message_id,sender_qqnumber,"由于Hypixel使用了5秒盾,所以该功能暂时废弃")
 		reScan = re.search(".*内部|\\dR|\\n元|破甲|天花板|工具箱|绕更新|attach|cl14|cl8|开端|不封号|外部|.* toolbox|替换au|绕过(盒子)vape检测|外部|防封|封号|waibu|晋商|禁商|盒子更新后|跑路|小号机|群(号)[0-9]{5,10}", message_text.replace(" ","").replace("\n",""))
 		# print(reScan)
 		if len(message_text) > 35 and reScan != None:
