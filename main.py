@@ -83,9 +83,6 @@ def on_message2(ws, message):
 		if message_text.find("[表情:呲牙]") != -1:
 			sendGroupmsg3(group_number,sender_qqnumber,"为什么要呲牙咧嘴?:(((((")
 			recall(message_id)
-		if sender_qqnumber in [] and message_text[0] == "#":
-			sendGroupmsg(group_number,message_id,sender_qqnumber,"你好,你已经被禁止使用这部分功能!")
-			return
 		print("[{0}({1})] {2}({3}) {4}".format(group_name,group_number,sender_name,sender_qqnumber,message_text))
 		if message_text == "#test":
 			sendGroupmsg(group_number,message_id,sender_qqnumber,"Hello!")
@@ -117,6 +114,7 @@ def on_message2(ws, message):
 			try:
 				server = MinecraftServer.lookup(command_list[1]).status()
 				aaa = "Motd:\n{0}\n在线人数:{1}/{2}\nPing:{3}\nVersion:{4} (protocol:{5})".format(re.sub(re.compile(r"§."),"",server.description),server.players.online,server.players.max,server.latency,server.version.name,server.version.protocol)
+				print(aaa)
 				data1 = {
 					"target": group_number,"quote": message_id,
 					"messageChain": [
@@ -125,8 +123,8 @@ def on_message2(ws, message):
 					]
 				}
 				# {"type":"Image","base64":server.favicon.replace("data:image/png;base64,","")}
-				if server.favicon != None:
-					data1["messageChain"].append({"type":"Image","base64":server.favicon.replace("data:image/png;base64,","")})
+				# if server.favicon != None:
+					# data1["messageChain"].append({"type":"Image","base64":server.favicon.replace("data:image/png;base64,","")})
 				print(requests.post("http://localhost:8080/sendGroupMessage",data=json.dumps(data1)).text)
 			except Exception as e:
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"ERR: {}:{}".format(type(e),e))
