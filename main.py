@@ -141,6 +141,13 @@ def on_message2(ws, message):
 					unmutePerson(group_number,int(command_list[1]))
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"Finish!!!")
 			else:sendGroupmsg(group_number,message_id,sender_qqnumber,"You can't do it!!!")
+		if command_list[0] == "#muteme":			
+			try:
+				m = random.randint(5,15)
+				sendGroupmsg(group_number,message_id,sender_qqnumber,"Okay!! I'll mute you {}min".format(m))
+				mutePerson(group_number,sender_qqnumber,60*m)
+			except Exception as e:
+				sendGroupmsg(group_number,message_id,sender_qqnumber,"ERR: {}:{}".format(type(e),e))
 		if command_list[0] == "#hypban":
 			try:
 				userName = command_list[1]
