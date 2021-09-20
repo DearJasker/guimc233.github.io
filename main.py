@@ -187,6 +187,11 @@ def on_message2(ws, message):
 					mutePerson(group_number,sender_qqnumber,2591940)
 					# sendGroupmsg3(group_number,sender_qqnumber,"触发禁言Test")
 					sendAdList[sender_qqnumber] = 0
+		if command_list[0] == "#send":
+			if sender_qqnumber in adminList:
+				sendGroupmsg2(command_list[1]." ".join(command_list[3:]))
+			else:
+				sendGroupmsg(group_number,message_id,sender_qqnumber,"You can't do it!!!")
 		if command_list[0] == "#fdpinfo":
 			# https://bstats.org/api/v1/plugins/11076/charts/<Type>/data
 			try:
