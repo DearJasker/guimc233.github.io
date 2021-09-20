@@ -120,8 +120,8 @@ def on_message2(ws, message):
 					]
 				}
 				# {"type":"Image","base64":server.favicon.replace("data:image/png;base64,","")}
-				# if server.favicon != None:
-					# data1["messageChain"].append({"type":"Image","base64":server.favicon.replace("data:image/png;base64,","")})
+				if server.favicon != None:
+					data1["messageChain"].append({"type":"Image","base64":server.favicon.replace("data:image/png;base64,","")})
 				print(requests.post("http://localhost:8080/sendGroupMessage",data=json.dumps(data1)).text)
 			except Exception as e:
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"ERR: {}:{}".format(type(e),e))
