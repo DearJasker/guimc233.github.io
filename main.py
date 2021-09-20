@@ -44,7 +44,7 @@ def on_message2(ws, message):
 			except Exception as e:
 				sendGroupmsg2(ad["groupId"],"自动处理进群申请失败! {}:{}".format(type(e),e))
 		if ad["type"] == "MemberLeaveEventKick":
-			aaa = "{0}({1})被移出了本群！\n操作人:{2}({3})".format(ad["member"]["memberName"],ad["member"]["id"],ad["operator"]["memberName"],ad["operator"]["id"])
+			aaa = "{0}({1}) Get banned!!\nStaff:{2}({3})".format(ad["member"]["memberName"],ad["member"]["id"],ad["operator"]["memberName"],ad["operator"]["id"])
 			sendGroupmsg2(ad["operator"]["group"]["id"],aaa)
 		if ad["type"] == "MemberJoinEvent":
 			sendGroupmsg2(ad["member"]["group"]["id"],"Welcome! {0}({1})".format(ad["member"]["memberName"],ad["member"]["id"]))
@@ -128,7 +128,7 @@ def on_message2(ws, message):
 		if command_list[0] == "折磨":
 			if ad["sender"]["permission"] in ["OWNER","ADMINISTRATOR"] or sender_qqnumber in adminList:
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"Starting...")
-				if (int(command_list[3]) <= 0 and int(command_list[2]) > 10) or (int(command_list[3])*int(command_list[2]*2 > 180)):
+				if (int(command_list[3]) <= 0 and int(command_list[2]) > 10) or (int(command_list[3])*int(command_list[2])*2 > 180)):
 					sendGroupmsg(group_number,message_id,sender_qqnumber,"You can't do it! The number is wrong!")
 					return
 				for i in range(int(command_list[2])):
