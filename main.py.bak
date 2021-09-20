@@ -87,7 +87,7 @@ def on_message2(ws, message):
 			try:
 				uuid1 = requests.get("https://api.mojang.com/users/profiles/minecraft/"+command_list[1])
 				if uuid1.status_code != 200:
-					sendGroupmsg(group_number,message_id,sender_qqnumber,"获取信息失败,可能是没有这个玩家?")
+					sendGroupmsg(group_number,message_id,sender_qqnumber,"获取信息失败,可能是没有这 个玩家?")
 					return
 				uuid1 = uuid1.json()["id"]
 				# https://crafatar.com/renders/body/{uuid}
