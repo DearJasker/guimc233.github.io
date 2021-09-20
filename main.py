@@ -189,7 +189,7 @@ def on_message2(ws, message):
 					sendAdList[sender_qqnumber] = 0
 		if command_list[0] == "#send":
 			if sender_qqnumber in adminList:
-				sendGroupmsg2(command_list[1]." ".join(command_list[3:]))
+				sendGroupmsg2(command_list[1]," ".join(command_list[3:]))
 			else:
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"You can't do it!!!")
 		if command_list[0] == "#fdpinfo":
