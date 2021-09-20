@@ -132,7 +132,7 @@ def on_message2(ws, message):
 		if command_list[0] == "折磨":
 			if ad["sender"]["permission"] in ["OWNER","ADMINISTRATOR"] or sender_qqnumber in adminList:
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"Starting...")
-				if int(command_list[3]) <= 0 and int(command_list[2]) > 10:
+				if (int(command_list[3]) <= 0 and int(command_list[2]) > 10) or (int(command_list[3])*int(command_list[2]*2 > 180)):
 					sendGroupmsg(group_number,message_id,sender_qqnumber,"You can't do it! The number is wrong!")
 					return
 				for i in range(int(command_list[2])):
@@ -142,7 +142,7 @@ def on_message2(ws, message):
 					unmutePerson(group_number,int(command_list[1]))
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"Finish!!!")
 			else:sendGroupmsg(group_number,message_id,sender_qqnumber,"You can't do it!!!")
-		if command_list[0] == "#muteme":			
+		if command_list[0] in ["#getGift","获取小号","#muteme","#getGirl"]:			
 			try:
 				m = random.randint(5,15)
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"Okay!! I'll mute you {}min".format(m))
@@ -169,7 +169,7 @@ def on_message2(ws, message):
 			except Exception as e:
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"ERR: {}:{}".format(type(e),e))
 			# sendGroupmsg(group_number,message_id,sender_qqnumber,"由于Hypixel使用了5秒盾,所以该功能暂时废弃")
-		reScan = re.search(".*内部|\\dR|\\n元|破甲|天花板|工具箱|绕更新|attach|cl14|cl8|开端|不封号|外部|.* toolbox|替换au|绕过(盒子)vape检测|外部|防封|封号|waibu|晋商|禁商|盒子更新后|跑路|小号机|群(号)[0-9]{5,10}", message_text.replace(" ","").replace("\n",""))
+		reScan = re.search("加群[0-9]{5,10}|.*内部|\\dR|\\n元|破甲|天花板|工具箱|绕更新|开端|不封号|外部|.* toolbox|替换au|绕过(盒子)vape检测|外部|防封|封号|waibu|晋商|禁商|盒子更新后|跑路|小号机|群(号)(:|：)[0-9]{5,10}", message_text.replace(" ","").replace(".","").replace("\n",""))
 		# print(reScan)
 		if len(message_text) > 35 and reScan != None:
 			if sender_qqnumber in adminList:
@@ -177,7 +177,7 @@ def on_message2(ws, message):
 				sendTempMsg(group_number,1584784496,"{0}({1})匹配成功了正则,并且消息字数大于了35\n消息:\n{2}".format(sender_name,sender_qqnumber,message_text))
 				return
 			if ad["sender"]["permission"] in ["OWNER","ADMINISTRATOR"]:
-				sendGroupmsg3(group_number,sender_qqnumber,"你好像在发广告 :(((((\n但是我貌似管不了你..."+"\n如果您认为有误判 请联系 1584784496\n第一次匹配在位置 {0}".format(reScan.span()))
+				sendGroupmsg3(group_number,sender_qqnumber,"你好像在发广告 :(((((\n但是你是管你员/群主..."+"\n如果您认为有误判 请联系 1584784496\n第一次匹配在位置 {0}".format(reScan.span()))
 				sendTempMsg(group_number,1584784496,"{0}({1})匹配成功了正则,并且消息字数大于了35\n消息:\n{2}".format(sender_name,sender_qqnumber,message_text))
 				return
 			sendGroupmsg3(group_number,sender_qqnumber,"你好像在发广告 :((((("+"\n如果您认为有误判 请联系 1584784496\n第一次匹配在位置 {0}".format(reScan.span()))
@@ -215,7 +215,7 @@ def on_message2(ws, message):
 					for i in a["seriesData"]:
 						onlineSystem.append("{}: {}".format(i["name"],i["y"]))
 					sendGroupmsg(group_number,message_id,sender_qqnumber,"OnlineSystms:\n{}".format("\n".join(onlineSystem)))
-				elif command_list[1] == "countrys":
+				elif command_list[1] == "countries":
 					url = "https://bstats.org/api/v1/plugins/11076/charts/location/data"
 					a = requests.get(url=url).json()
 					onlineCountry = []
