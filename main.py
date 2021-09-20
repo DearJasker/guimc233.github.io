@@ -15,9 +15,6 @@ adminList = [1790194105,1584784496,2734583]
 hypban_cookie = None
 sendAdList = {}
 
-def SpamCheck(group,qq,msgid):
-	return
-
 def blockList_get(number):
 	return os.path.isfile("C:\\Users\\guimc\\Desktop\\qqbots\\mirai\\ntlist\\{}".format(number))
 
@@ -77,7 +74,6 @@ def on_message2(ws, message):
 		sender_name = ad["sender"]["memberName"]
 		group_number = ad["sender"]["group"]["id"]
 		group_name = ad["sender"]["group"]["name"]
-		SpamCheck(group_number,sender_qqnumber,message_id)
 		if message_text == "":
 			return
 		command_list = message_text.split(" ")
