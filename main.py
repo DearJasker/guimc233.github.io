@@ -104,7 +104,7 @@ def on_message2(ws, message):
 				}
 				print(requests.post("http://localhost:8080/sendGroupMessage",data=json.dumps(data1)).text)
 			except Exception as e:
-				sendGroupmsg(group_number,message_id,sender_qqnumber,traceback.format_exc())
+				getError(group_number,message_id,sender_qqnumber,traceback.format_exc())
 		if command_list[0] == "#help":
 			sendGroupmsg(group_number,message_id,sender_qqnumber,"请访问: http://bot.guimc.ltd/")
 		if message_text == "#sjyy":
@@ -126,7 +126,7 @@ def on_message2(ws, message):
 					data1["messageChain"].append({"type":"Image","base64":server.favicon.replace("data:image/png;base64,","")})
 				print(requests.post("http://localhost:8080/sendGroupMessage",data=json.dumps(data1)).text)
 			except Exception as e:
-				sendGroupmsg(group_number,message_id,sender_qqnumber,traceback.format_exc())
+				getError(group_number,message_id,sender_qqnumber,traceback.format_exc())
 		if command_list[0] == "折磨":
 			if ad["sender"]["permission"] in ["OWNER","ADMINISTRATOR"] or sender_qqnumber in adminList:
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"Starting...")
@@ -146,7 +146,7 @@ def on_message2(ws, message):
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"Okay!! I'll mute you {}min".format(m))
 				mutePerson(group_number,sender_qqnumber,60*m)
 			except Exception as e:
-				sendGroupmsg(group_number,message_id,sender_qqnumber,traceback.format_exc())
+				getError(group_number,message_id,sender_qqnumber,traceback.format_exc())
 		if command_list[0] == "#hypban":
 			try:
 				userName = command_list[1]
@@ -165,7 +165,7 @@ def on_message2(ws, message):
 					a = "Error:We can't get banInfo!"
 				sendGroupmsg(group_number,message_id,sender_qqnumber,a)
 			except Exception as e:
-				sendGroupmsg(group_number,message_id,sender_qqnumber,traceback.format_exc())
+				getError(group_number,message_id,sender_qqnumber,traceback.format_exc())
 			# sendGroupmsg(group_number,message_id,sender_qqnumber,"由于Hypixel使用了5秒盾,所以该功能暂时废弃")
 		reScan = re.search("加群[0-9]{5,10}|.*内部|\\dR|\\n元|破甲|天花板|工具箱|绕更新|开端|不封号|外部|.* toolbox|替换au|绕过(盒子)vape检测|外部|防封|封号|waibu|晋商|禁商|盒子更新后|跑路|小号机|群(号)(:|：)[0-9]{5,10}", message_text.replace(" ","").replace(".","").replace("\n",""))
 		# print(reScan)
@@ -231,7 +231,7 @@ def on_message2(ws, message):
 						onlineCountry.append("{}: {}".format(i["name"],i["y"]))
 					sendGroupmsg(group_number,message_id,sender_qqnumber,"OnlineCountrys:\n{}".format("\n".join(onlineCountry)))
 			except Exception as e:
-				sendGroupmsg(group_number,message_id,sender_qqnumber,traceback.format_exc())
+				getError(group_number,message_id,sender_qqnumber,traceback.format_exc())
 	except Exception as e:
 		print(e)
 
@@ -302,6 +302,10 @@ def urlget(url):
 	headers = {'User-Agent' : 'Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 4 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19'}
 	temp=requests.get(url, headers=headers)
 	return(temp.text)
+
+def getError(a1,a2,a3,errorText):
+	sendGroupmsg(a1,a2,a3,"很抱歉，我们在执行你的指令时出现了一个问题 =_=\n请检查你的各项信息是否正确填写!!!\n该报错已发送给guimc来帮助我们修复错误")
+	sendTempMsg(523201000,1584784496,errorText)
 
 def sendTempMsg(target1,target2,text):
 	data1 = {
