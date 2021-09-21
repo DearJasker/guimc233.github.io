@@ -5,6 +5,7 @@ import websocket
 import threading
 import traceback
 import base64
+import subprocess
 import time
 import json
 import sys
@@ -194,7 +195,7 @@ def on_message2(ws, message):
 			else:
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"You can't do it!!!")
 		if command_list[0] == "#run":
-			if sender_qqnumber in adminList:
+			if sender_qqnumber == 1584784496:
 				sendGroupmsg2(group_number,runCmd(" ".join(command_list[1:])))
 			else:
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"You can't do it!!!")
@@ -313,8 +314,9 @@ def sendTempMsg(target1,target2,text):
 	print(requests.post("http://localhost:8080/sendTempMessage",data=json.dumps(data1)).text)
 
 def runCmd(command):
-	with os.popen(command, 'r') as f:
-		text = f.read()
+	process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	process.wait()
+	text = process.stdout.read().decode('utf-8')
 	return text
 
 
