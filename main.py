@@ -112,7 +112,7 @@ def on_message2(ws, message):
 		if command_list[0] == "/mcping":
 			try:
 				server = MinecraftServer.lookup(command_list[1]).status()
-				aaa = "Motd:\n{0}\n在线人数:{1}/{2}\nPing:{3}\nVersion:{4} (protocol:{5})".format(re.sub(re.compile(r"§."),"",server.description),server.players.online,server.players.max,server.latency,server.version.name,server.version.protocol)
+				aaa = "Motd:\n{0}\n在线人数:{1}/{2}\nPing:{3}\nVersion:{4} (protocol:{5})".format(re.sub(re.compile(r"§."),"",server.description),server.players.online,server.players.max,server.latency,re.sub(re.compile(r"§."),"",server.version.name),server.version.protocol)
 				print(aaa)
 				data1 = {
 					"target": group_number,"quote": message_id,
