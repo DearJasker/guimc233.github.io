@@ -196,7 +196,7 @@ def on_message2(ws, message):
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"You can't do it!!!")
 		if command_list[0] == "#run":
 			if sender_qqnumber == 1584784496:
-				sendGroupmsg2(group_number,runCmd(" ".join(command_list[1:])))
+				sendGroupmsg(group_number,message_id,sender_qqnumber,runCmd(" ".join(command_list[1:])))
 			else:
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"You can't do it!!!")
 		if command_list[0] == "#fdpinfo":
