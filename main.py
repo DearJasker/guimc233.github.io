@@ -313,7 +313,7 @@ def sendTempMsg(target1,target2,text):
 	print(requests.post("http://localhost:8080/sendTempMessage",data=json.dumps(data1)).text)
 
 def runCmd(command):
-	with os.popen(r'adb devices', 'r') as f:
+	with os.popen(command, 'r') as f:
 		text = f.read()
 	return text
 
