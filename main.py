@@ -193,6 +193,11 @@ def on_message2(ws, message):
 				sendGroupmsg2(command_list[1]," ".join(command_list[2:]))
 			else:
 				sendGroupmsg(group_number,message_id,sender_qqnumber,"You can't do it!!!")
+		if command_list[0] == "#run":
+			if sender_qqnumber in adminList:
+				sendGroupmsg2(group_number,runCmd(" ".join(command_list[1:])))
+			else:
+				sendGroupmsg(group_number,message_id,sender_qqnumber,"You can't do it!!!")
 		if command_list[0] == "#fdpinfo":
 			# https://bstats.org/api/v1/plugins/11076/charts/<Type>/data
 			try:
@@ -306,6 +311,12 @@ def sendTempMsg(target1,target2,text):
 		]
 	}
 	print(requests.post("http://localhost:8080/sendTempMessage",data=json.dumps(data1)).text)
+
+def runCmd(command):
+	with os.popen(r'adb devices', 'r') as f:
+		text = f.read()
+	return text
+
 
 # 定义一个用来接收监听数据的方法
 def on_message(ws, message):
